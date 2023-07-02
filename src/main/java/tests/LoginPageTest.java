@@ -10,13 +10,29 @@ public class LoginPageTest extends BaseTest {
 
     @Test
     public void login_correctCredentials_loggedToApp() {
-        System.out.println("Debug: username = " + username);
-        System.out.println("Debug: password = " + password);
+        /*
+    User Story:
+    As a user, I want to be able to log in with correct credentials
+    so that I can access the main page of the application.
+    */
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.open(url);
         MainPage mainPage = loginPage.loginToApp(username, password);
         Assert.assertTrue(mainPage.isOpen());
+    }
+
+    @Test
+    public void login_incorrectCredentials_errorDisplayed (){
+        /*
+    User Story:
+    As a user, I want to be shown an error message when I try to log in
+    with incorrect credentials so that I can understand that the login was unsuccessful.
+    */
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.open(url);
+        MainPage mainPage = loginPage.loginToApp("wrongUsername", "wrongPassword");
+        Assert.assertTrue(loginPage.isError());
     }
 
 }

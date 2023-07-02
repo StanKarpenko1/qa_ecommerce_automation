@@ -25,4 +25,5 @@ public class MainPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(cartLocator));
         return driver.findElement(cartLocator);
     }
+
 }
