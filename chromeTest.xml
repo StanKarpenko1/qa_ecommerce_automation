@@ -12,6 +12,7 @@
                 <methods>
                     <include name="login_correctCredentials_loggedToApp"/>
                     <include name="login_incorrectCredentials_errorDisplayed"/>
+                    <include name="login_emptyCredentials_errorDisplayed"/>
                 </methods>
             </class>
         </classes>

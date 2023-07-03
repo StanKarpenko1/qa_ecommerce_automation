@@ -17,6 +17,11 @@ public class LoginPage extends BasePage{
         driver.get(url);
     }
 
+    public void clearCredentials (){
+        getUsernameField().clear();
+        getPasswordField().clear();
+    }
+
     public MainPage loginToApp(String username, String password) {
         getUsernameField().sendKeys(username);
         getPasswordField().sendKeys(password);
@@ -35,9 +40,36 @@ public class LoginPage extends BasePage{
         try {
             WebElement error = getErrorFrame();
             return error.isDisplayed();
+        } catch (TimeoutException err) {
+            return false;
+        }
+    }
+
+    private WebElement getUsernameRequiredError (){
+        By usernameRequiredError = By.xpath("//*[text() = 'Epic sadface: Username is required']");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(usernameRequiredError));
+        return driver.findElement(usernameRequiredError);
+    }
+
+    public boolean isUsernameRequiredError(){
+        try {
+            WebElement usernameRequiredError = getUsernameRequiredError();
+            return usernameRequiredError.isDisplayed();
         } catch (TimeoutException err){
             return false;
         }
-
+    }
+    private WebElement getPaseRequiredError (){
+        By passRequiredError = By.xpath("//*[text() = 'Epic sadface: Password is required']");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(passRequiredError));
+        return driver.findElement(passRequiredError);
+    }
+    public boolean isPassRequiredError(){
+        try {
+            WebElement passRequiredError = getPaseRequiredError();
+            return passRequiredError.isDisplayed();
+        } catch (TimeoutException err){
+            return false;
+        }
     }
 }
