@@ -22,7 +22,7 @@ public class LoginPageTest extends BaseTest {
         Assert.assertTrue(mainPage.isOpen());
     }
 
-    // Negative test scenarios 
+    // Negative test scenarios
     @Test
     public void login_incorrectCredentials_errorDisplayed (){
         /*
