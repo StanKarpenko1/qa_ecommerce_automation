@@ -8,11 +8,9 @@
         <parameter name="browser" value="Chrome"/>
 
         <classes>
-            <class name="tests.MainPageTest">
+            <class name="tests.AddToCartTest">
                 <methods>
-                    <include name="mainPage_productListDisplayed"/>
-                    <include name="mainPage_productDescriptionIsOpen_clickImg"/>
-                    <include name="mainPage_productDescriptionIsOpen_clickDescription"/>
+                    <include name="addToCart_addSingleProduct_productAdded"/>
                 </methods>
             </class>
         </classes>

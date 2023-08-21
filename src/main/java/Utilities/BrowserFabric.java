@@ -20,7 +20,7 @@ public class BrowserFabric {
     }
 
     private static ChromeDriver getChromeDriver() {
-        WebDriverManager.chromedriver().setup();
+        System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("window-size=1400,1000");
         return new ChromeDriver (options);
