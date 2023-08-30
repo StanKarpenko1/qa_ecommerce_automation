@@ -18,6 +18,10 @@ public class BaseTest {
     protected String username;
     protected String password;
     protected MainPage mainPage;
+    protected String firstName;
+    protected String lastName;
+    protected String zipCode;
+
 
     @Parameters({"browser", "url", "username", "password"})// Parameters are set in a xml file.
 
