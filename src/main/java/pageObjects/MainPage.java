@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Random;
@@ -28,12 +29,23 @@ public class MainPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(cartLocator));
         return driver.findElement(cartLocator);
     }
-    // cart button
-    private List <WebElement> getAddToCartButton () {
-        By addToCartButton = By.cssSelector(".btn.btn_primary.btn_small.btn_inventory");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(addToCartButton));
-        return driver.findElements(addToCartButton);
+
+    // click on cart
+    public void goToCart (){
+        getShoppingCartIcon().click();
     }
+
+    // cart button
+    public List <WebElement> getAddToCartButton () {
+        By addToCartButton = By.cssSelector(".btn.btn_primary.btn_small.btn_inventory");
+        // since Add to Cart buttons turns to Remove, when no one left it reurns an empty list
+        try{
+            return driver.findElements(addToCartButton);
+        } catch (NoSuchElementException e) {
+            return new ArrayList<>(); // return an empty list if no elements found
+        }
+    }
+
     public int getNumberAddToCartButtons (){
         return getAddToCartButton().size();
     }
@@ -120,8 +132,34 @@ public class MainPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(BackpackAddToCartItem));
         return  driver.findElement(BackpackAddToCartItem);
     }
-
-    public String getShoppingCartItemCount() {
-        return shoppingCartCountItem().getText();
+    public WebElement getBackPackRemoveButton (){
+        By BackpackAddRemoveButton = By.id("remove-sauce-labs-backpack");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(BackpackAddRemoveButton));
+        return driver.findElement(BackpackAddRemoveButton);
     }
+
+    public String getShoppingCartItemCount(){
+        By cartItemCountLocator =  By.cssSelector(".shopping_cart_badge");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(cartItemCountLocator));
+        WebElement cartCountElement = driver.findElement(cartItemCountLocator);
+        return cartCountElement.getText().trim();
+    }
+
+    public String getBackpackProductName () {
+        By backpackNameLocator = By.id("item_4_title_link");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(backpackNameLocator));
+        return driver.findElement(backpackNameLocator).getText().trim();
+    }
+
+    public String getBackpackProductPrice () {
+        By backpackPriceLocator = By.cssSelector("#inventory_container > div > div:nth-child(1) > div.inventory_item_description > div.pricebar > div");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(backpackPriceLocator));
+        return driver.findElement(backpackPriceLocator).getText().trim();
+    }
+
+
+
+
 }
+
+

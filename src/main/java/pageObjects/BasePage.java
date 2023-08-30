@@ -10,6 +10,6 @@ public class BasePage {
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(30), Duration.ofMillis((200)));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(5), Duration.ofMillis((200)));
     }
 }

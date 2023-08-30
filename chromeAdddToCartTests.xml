@@ -6,13 +6,26 @@
         <parameter name="username" value="standard_user"/>
         <parameter name="password" value="secret_sauce"/>
         <parameter name="browser" value="Chrome"/>
-
+        <parameter name="firstName" value="John"/>
+        <parameter name="lastName" value="Doe"/>
+        <parameter name="zip" value="12345"/>
         <classes>
             <class name="tests.AddToCartTest">
                 <methods>
                     <include name="addToCart_addSingleProduct_productAdded"/>
+                    <include name="removeFromCartSingle_fromMainPage_productREmoved"/>
+                    <include name="addToCart_addMultipleProduct_productAdded"/>
+                    <include name="addToCart_proceedToCart_infoMatch"/>
+                    <include name="checkoutInfo_enterDetails_redirectToOverview"/>
                 </methods>
             </class>
+            
+            <class name="tests.CartPageTest">
+                <methods>
+                    <include name="cartPage_clickCheckout_checkotPageOpen"/>
+                </methods>
+            </class>
+
         </classes>
     </test>
 
