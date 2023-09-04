@@ -17,7 +17,7 @@ public class OverviewPage extends BasePage {
         }
     }
 
-    private WebElement getFinishBtnField() {
+    public   WebElement getFinishBtnField() {
         By firstNameLocator = By.id("finish");
         wait.until(ExpectedConditions.visibilityOfElementLocated(firstNameLocator));
         return driver.findElement(firstNameLocator);

@@ -13,7 +13,7 @@
         <classes>
             <class name="tests.CartPageTest">
                 <methods>
-                    <include name="checkoutInfo_enterDetails_redirectToOverview"/>
+                    <include name="addToCart_proceedToCheckout_checkoutComplete"/>
                 </methods>
             </class>
 

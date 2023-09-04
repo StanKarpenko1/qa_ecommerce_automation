@@ -45,7 +45,7 @@ public class LoginPageTest extends BaseTest {
     public void login_emptyCredentials_errorDisplayed (){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.open(url);
-        // Clear creddentials
+        // Clear credentials
         loginPage.clearCredentials();
         loginPage.loginToApp("", "");
         Assert.assertTrue(loginPage.isError() && loginPage.isUsernameRequiredError()) ;
@@ -54,13 +54,13 @@ public class LoginPageTest extends BaseTest {
        /*
     User Story:
     As a user, I want to be notified when I enter a valid username but leave the password field empty
-    so that I can be reminded to enter my password before attempting to login.
+    so that I can be reminded to enter my password before attempting to log in.
     */
 
     public void login_validUsernameEmptyPass_errorDisplayed (){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.open(url);
-        // Clear creddentials
+        // Clear credentials
         loginPage.clearCredentials();
         loginPage.loginToApp(username, "");
         Assert.assertTrue(loginPage.isError() && loginPage.isPassRequiredError()) ;
