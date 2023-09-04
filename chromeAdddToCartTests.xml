@@ -17,6 +17,9 @@
                     <include name="addToCart_addMultipleProduct_productAdded"/>
                     <include name="addToCart_proceedToCart_infoMatch"/>
                     <include name="checkoutInfo_enterDetails_redirectToOverview"/>
+                    <include name="addToCart_proceedToCheckout_checkoutComplete"/>
+                    <include name="addToCart_proceedToCart_infoMatch"/>
+                    
                 </methods>
             </class>
             

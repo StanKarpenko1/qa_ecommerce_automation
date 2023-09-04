@@ -4,13 +4,11 @@ import Utilities.BrowserFabric;
 import enums.BrowserType;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pageObjects.LoginPage;
 import pageObjects.MainPage;
 
+import static constants.Constants.TimeoutVariables.IMPLICIT_WAIT;
 
 public class BaseTest {
     protected WebDriver driver;
@@ -18,9 +16,6 @@ public class BaseTest {
     protected String username;
     protected String password;
     protected MainPage mainPage;
-    protected String firstName;
-    protected String lastName;
-    protected String zipCode;
 
 
     @Parameters({"browser", "url", "username", "password"})// Parameters are set in a xml file.
@@ -47,15 +42,23 @@ public class BaseTest {
 
     }
 
+//    @AfterTest
+//    public void clearCookiesAndLocalStorage(){
+//        if (CLEAR_COOKIES_AND_STORAGE){
+//            JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
+//            driver.manage().deleteAllCookies();
+//            javascriptExecutor.executeScript("window.sessionStorage.clear()");
+//            javascriptExecutor.executeScript("window.localStorage.clear()");
+//        }
+//    }
+
+
     @AfterMethod
     public void tearDown() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(IMPLICIT_WAIT);
         if(driver!=null){driver.quit();}
     }
 
-//    public MainPage login(){
-//
-//    }
 }
 
 
